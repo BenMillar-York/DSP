@@ -4,10 +4,12 @@ n = 0:N;
 hanning = 0.5 - 0.5 * cos(2*pi*n / N);
 rectangle = ones(1,N+1);
 
-plot(n, hanning);
+figure('Name', 'Time domain response of Hanning and Rectangular windows');
+title('Time domain response of Hanning and Rectangular windows')
 hold on;
+plot(n, hanning);
 plot(n, rectangle);
-figure;
+%timePlot = figure;
 
 %X = fft(hanning, 1024) / length(hanning);
 
@@ -26,6 +28,11 @@ S_Rect = X_Rect (1: length (Freq)) / max (X_Rect);
 mag_dB_Hamming =  20*log10(abs(S_Hamming));
 mag_dB_Rect =  20*log10(abs(S_Rect));
 %S = X (1: length (fk)) / max (X);
-plot(Freq, mag_dB_Hamming);
+
+figure('Name', 'Frequency Response of Hanning and Rectangular windows');
 hold on;
-plot(Freq, mag_dB_Rect);
+plot(Freq, mag_dB_Hamming);
+title('Frequency Response of Hanning and Rectangular windows');
+plot(Freq, mag_dB_Rect, '--');
+
+
